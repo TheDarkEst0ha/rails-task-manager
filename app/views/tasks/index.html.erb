@@ -1,0 +1,21 @@
+<div class="container mt-5 mb-3">
+  <h1>Tasks List</h1>
+  <%= form_with model: @task do |f| %>
+    <ul class="my-3">
+      <% @tasks.each do |task| %>
+        <li class="list-group-item py-3">
+          <%= f.check_box :completed, class: 'm-2' %>
+          <%= link_to task.title, task_path(task), class: 'text-reset text-decoration-none' %>
+          <%= link_to task_path(task), data: {turbo_method: :delete, turbo_confirm: "Remove #{task.title}?" } do %>
+            <i class="fa-regular fa-trash-can btn btn-danger mx-3 p-2"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+
+  <%= form_with model: @task do |f| %>
+    <% f.submit%>
+    <% link_to '+ Add new task', new_task_path, class: 'btn btn-primary'  %>
+  <% end %>

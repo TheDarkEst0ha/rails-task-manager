@@ -1,0 +1,14 @@
+<% @task.errors.full_messages.each do |msg| %>
+  <p class="text-danger"><%= msg %></p>
+<% end %>
+
+<%= form_with model: @task do |f| %>
+    <%= f.label :title, class: 'form-label' %>
+    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.label :details, class: 'form-label' %>
+    <%= f.text_field :details, class: 'form-control' %>
+    <div class="container mt-3">
+      <%= f.submit 'Submit', class: 'btn btn-success me-5' %>
+      <%= link_to 'See all tasks', tasks_path, class: 'btn btn-primary' %>
+    </div>
+<% end %>
